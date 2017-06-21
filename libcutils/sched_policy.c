@@ -390,12 +390,6 @@ int set_sched_policy(int tid, SchedPolicy policy)
             break;
         }
 
-
-        if (fd > 0 && add_tid_to_cgroup(tid, fd) != 0) {
-            if (errno != ESRCH && errno != ENOENT)
-                return -errno;
-        }
-
 #ifdef USE_SCHEDBOOST
         if (boost_fd > 0 && add_tid_to_cgroup(tid, boost_fd) != 0) {
             if (errno != ESRCH && errno != ENOENT)
